@@ -233,7 +233,7 @@ function initializeStatCounters() {
 }
 
 // Gallery carousel functionality
-let currentSlide = 0;
+window.currentSlide = 0;
 const slidesToShow = window.innerWidth <= 768 ? 1 : 3;
 
 function initializeCarousel() {
@@ -293,12 +293,12 @@ function moveCarousel(direction) {
     const items = document.querySelectorAll('.gallery-item');
     const totalItems = Math.floor(items.length / 2); // Account for cloned items
     
-    currentSlide += direction;
+    window.currentSlide += direction;
     
-    if (currentSlide >= totalItems) {
-        currentSlide = 0;
-    } else if (currentSlide < 0) {
-        currentSlide = totalItems - 1;
+    if (window.currentSlide >= totalItems) {
+        window.currentSlide = 0;
+    } else if (window.currentSlide < 0) {
+        window.currentSlide = totalItems - 1;
     }
     
     updateCarouselPosition();
@@ -308,7 +308,7 @@ function updateCarouselPosition() {
     const track = document.getElementById('carousel-track');
     const itemWidth = 400; // Width of each gallery item
     const gap = 24; // Gap between items
-    const offset = -(currentSlide * (itemWidth + gap));
+    const offset = -(window.currentSlide * (itemWidth + gap));
     
     track.style.transform = `translateX(${offset}px)`;
 }
