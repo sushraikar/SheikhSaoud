@@ -262,7 +262,28 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--background-dark) 0%, var(--primary-color) 100%);
+    background: 
+        linear-gradient(135deg, rgba(15, 20, 25, 0.85) 0%, rgba(26, 54, 93, 0.75) 50%, rgba(15, 20, 25, 0.85) 100%),
+        linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%, rgba(0, 212, 255, 0.1) 100%),
+        url('https://sheikhsaoud.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-26-at-12.10.53.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Enhanced overlay for better text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at center, transparent 20%, rgba(15, 20, 25, 0.4) 70%),
+        linear-gradient(to bottom, rgba(15, 20, 25, 0.3) 0%, transparent 30%, transparent 70%, rgba(15, 20, 25, 0.5) 100%);
+    z-index: 1;
 }
 
 .hero-canvas {
@@ -271,7 +292,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 0;
+    opacity: 0.3;
 }
 
 .hero-overlay {
@@ -280,42 +302,54 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--background-overlay);
+    background: 
+        linear-gradient(135deg, rgba(15, 20, 25, 0.2) 0%, transparent 50%, rgba(26, 54, 93, 0.3) 100%);
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     text-align: center;
     max-width: 800px;
     padding-top: 140px;
+    padding: 140px 20px 40px;
+    background: rgba(15, 20, 25, 0.1);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .hero-title {
     font-family: var(--font-display);
     font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: var(--space-lg);
     line-height: 1.2;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 4px 8px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.3);
+    color: #ffffff;
 }
 
 .holographic-text {
-    background: linear-gradient(45deg, var(--holographic-primary), var(--holographic-secondary), var(--accent-color));
+    background: linear-gradient(45deg, #ffffff, var(--accent-color), var(--holographic-primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: holographic-glow 3s ease-in-out infinite alternate;
     position: relative;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 @keyframes holographic-glow {
     0% {
-        text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
         filter: hue-rotate(0deg);
     }
     100% {
-        text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
         filter: hue-rotate(90deg);
     }
 }
@@ -323,17 +357,23 @@ body {
 .hero-subtitle {
     font-size: clamp(1.2rem, 3vw, 1.8rem);
     margin-bottom: var(--space-lg);
-    color: var(--text-secondary);
-    font-weight: 600;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .hero-description {
     font-size: 1.1rem;
     margin-bottom: var(--space-2xl);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.95);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
 }
 
 .stats-grid {
@@ -344,46 +384,61 @@ body {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     padding: var(--space-lg);
     border-radius: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.4);
     transition: var(--transition-normal);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 10px 30px rgba(0, 212, 255, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(212, 175, 55, 0.6);
 }
 
 .stat-number {
     font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
+    font-weight: 800;
+    color: #ffffff;
     margin-bottom: var(--space-sm);
     font-family: var(--font-display);
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(212, 175, 55, 0.5);
 }
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--text-secondary);
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .cta-button {
-    background: linear-gradient(45deg, var(--accent-color), var(--holographic-primary));
+    background: linear-gradient(45deg, var(--accent-color), var(--holographic-primary), #ffffff);
     border: none;
     padding: var(--space-md) var(--space-2xl);
     border-radius: 50px;
     color: var(--background-dark);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 8px 16px rgba(212, 175, 55, 0.4);
+    text-shadow: none;
 }
 
 .cta-button::before {
@@ -393,7 +448,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: var(--transition-slow);
 }
 
@@ -403,7 +458,9 @@ body {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.4),
+        0 12px 24px rgba(212, 175, 55, 0.6);
 }
 
 /* Section Styles */
@@ -1240,28 +1297,47 @@ section {
     
     .hero {
         padding: 0 var(--space-md);
+        background-attachment: scroll;
+        background-position: center 20%;
+    }
+    
+    .hero::before {
+        background: 
+            radial-gradient(ellipse at center, transparent 10%, rgba(15, 20, 25, 0.6) 60%),
+            linear-gradient(to bottom, rgba(15, 20, 25, 0.5) 0%, transparent 25%, transparent 75%, rgba(15, 20, 25, 0.7) 100%);
     }
     
     .hero-content {
         padding-top: 140px;
         text-align: center;
+        background: rgba(15, 20, 25, 0.2);
+        backdrop-filter: blur(3px);
+        margin: 0 10px;
     }
     
     .hero-title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
         line-height: 1.1;
         margin-bottom: var(--space-md);
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 4px 8px rgba(0, 0, 0, 0.7),
+            0 0 20px rgba(212, 175, 55, 0.4);
     }
     
     .hero-subtitle {
         font-size: clamp(1rem, 4vw, 1.4rem);
         margin-bottom: var(--space-md);
+        text-shadow: 
+            0 1px 2px rgba(0, 0, 0, 0.9),
+            0 2px 4px rgba(0, 0, 0, 0.7);
     }
     
     .hero-description {
         font-size: 1rem;
         margin-bottom: var(--space-xl);
         padding: 0 var(--space-sm);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
     
     .stats-grid {
@@ -1272,19 +1348,28 @@ section {
     
     .stat-card {
         padding: var(--space-md);
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
     }
     
     .stat-number {
         font-size: 2rem;
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 0.9),
+            0 0 10px rgba(212, 175, 55, 0.6);
     }
     
     .stat-label {
         font-size: 0.8rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     }
     
     .cta-button {
         padding: var(--space-md) var(--space-xl);
         font-size: 1rem;
+        box-shadow: 
+            0 4px 8px rgba(0, 0, 0, 0.4),
+            0 8px 16px rgba(212, 175, 55, 0.5);
     }
     
     .about-content {
@@ -1435,21 +1520,33 @@ section {
     
     .hero-content {
         padding-top: 120px;
+        background: rgba(15, 20, 25, 0.3);
+        backdrop-filter: blur(5px);
+        margin: 0 5px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
     }
     
     .hero-title {
         font-size: 1.8rem;
         margin-bottom: var(--space-sm);
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 1),
+            0 4px 8px rgba(0, 0, 0, 0.8),
+            0 0 20px rgba(212, 175, 55, 0.5);
     }
     
     .hero-subtitle {
         font-size: 1.1rem;
         margin-bottom: var(--space-sm);
+        text-shadow: 
+            0 1px 2px rgba(0, 0, 0, 1),
+            0 2px 4px rgba(0, 0, 0, 0.8);
     }
     
     .hero-description {
         font-size: 0.9rem;
         margin-bottom: var(--space-lg);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
     }
     
     .stats-grid {
@@ -1459,19 +1556,29 @@ section {
     
     .stat-card {
         padding: var(--space-sm);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(212, 175, 55, 0.5);
     }
     
     .stat-number {
         font-size: 1.8rem;
+        text-shadow: 
+            0 2px 4px rgba(0, 0, 0, 1),
+            0 0 10px rgba(212, 175, 55, 0.7);
     }
     
     .stat-label {
         font-size: 0.75rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
     }
     
     .cta-button {
         padding: var(--space-sm) var(--space-lg);
         font-size: 0.9rem;
+        box-shadow: 
+            0 4px 8px rgba(0, 0, 0, 0.5),
+            0 8px 16px rgba(212, 175, 55, 0.6);
     }
     
     .section-title {
@@ -1648,6 +1755,10 @@ section {
     
     .chat-fab {
         animation: none;
+    }
+    
+    .hero {
+        background-attachment: scroll;
     }
 }
 
