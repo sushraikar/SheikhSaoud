@@ -110,9 +110,6 @@ class EnhancedSheikhSaoudChatbot {
     }
     
     setupEventListeners() {
-        submitBtn.onclick = () => this.submitLeadCapture(formDiv);
-        skipBtn.onclick = () => this.skipLeadCapture(formDiv);
-        
         // Update language when page language changes
         document.addEventListener('languageChanged', (e) => {
             this.currentLanguage = e.detail.language;
