@@ -314,8 +314,6 @@ function updateCarouselPosition() {
 }
 
 // Lightbox functionality
-let lightboxImages = [];
-let currentLightboxIndex = 0;
 
 function initializeLightbox() {
     const images = document.querySelectorAll('.gallery-item img');
