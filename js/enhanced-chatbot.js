@@ -86,7 +86,7 @@ class EnhancedSheikhSaoudChatbot {
             const saveBtn = apiKeyContainer.querySelector('.api-key-save');
             const apiKeyInput = apiKeyContainer.querySelector('.api-key-input');
             
-            saveBtn.addEventListener('click', () => {
+            saveBtn.onclick = () => {
                 const apiKey = apiKeyInput.value.trim();
                 if (apiKey) {
                     this.mistralAI.setApiKey(apiKey);
@@ -98,7 +98,7 @@ class EnhancedSheikhSaoudChatbot {
                     this.addBotMessage('ℹ️ API key removed. Using built-in knowledge base.');
                 }
                 apiKeyContainer.style.display = 'none';
-            });
+            };
             
             // Load saved API key
             const savedApiKey = localStorage.getItem('mistral_api_key');
@@ -110,17 +110,8 @@ class EnhancedSheikhSaoudChatbot {
     }
     
     setupEventListeners() {
-        // Chat input handling
-        const input = document.getElementById('chatbot-input');
-        if (input) {
-            this.inputField = input;
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    this.sendMessage();
-                }
-            });
-        }
+        submitBtn.onclick = () => this.submitLeadCapture(formDiv);
+        skipBtn.onclick = () => this.skipLeadCapture(formDiv);
         
         // Update language when page language changes
         document.addEventListener('languageChanged', (e) => {
@@ -282,10 +273,10 @@ class EnhancedSheikhSaoudChatbot {
         this.typingIndicator = document.createElement('div');
         this.typingIndicator.className = 'message bot-message typing-indicator';
         this.typingIndicator.innerHTML = `
-            <div class="typing-animation">
-                <span></span>
-                <span></span>
-                <span></span>
+            button.onclick = () => {
+                this.sendMessage(suggestion);
+                suggestionsDiv.remove();
+            };
             </div>
         `;
         
