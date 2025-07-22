@@ -60,6 +60,17 @@ function initializeEventListeners() {
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
     if (lightboxPrev) lightboxPrev.addEventListener('click', () => changeLightboxImage(-1));
     if (lightboxNext) lightboxNext.addEventListener('click', () => changeLightboxImage(1));
+    
+    // Suggestion buttons
+    const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+    suggestionButtons.forEach(btn => {
+        btn.onclick = () => {
+            const suggestion = btn.textContent.trim();
+            if (window.enhancedChatbot) {
+                window.enhancedChatbot.sendMessage(suggestion);
+            }
+        };
+    });
 }
 
 // Navigation functionality
